@@ -17,9 +17,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -58,7 +62,7 @@ public class LoginPageController {
         
         String user = loginUsername.getText();
         String pass = loginPassword.getText();
-        String sql = "SELECT * FROM users WHERE username = '"+user+"' and password = '"+pass+"'";
+        String sql = "SELECT * FROM users WHERE username = ? and password = ?";
         
         connect = database.connectDb();
         try {
@@ -76,6 +80,15 @@ public class LoginPageController {
                 alert.setHeaderText(null);
                 alert.setContentText("Succesfully Login!");
                 alert.showAndWait();
+                
+                Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+                
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                
+                stage.setScene(scene);
+                stage.show();
+                
             } else {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Loggin Message");
@@ -88,6 +101,10 @@ public class LoginPageController {
     
     public void loginExit () {
         System.exit(0);
+    }
+    
+    public void initialize(URL url, ResourceBundle rb) {
+        
     }
     
 }

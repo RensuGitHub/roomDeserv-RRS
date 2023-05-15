@@ -35,7 +35,7 @@
             </AnchorPane>
             <AnchorPane fx:id="loginRightPane" layoutX="385.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="385.0" styleClass="loginRightPane" stylesheets="@LoginStyles.css">
                <children>
-                  <JFXButton fx:id="loginBtn" layoutX="217.0" layoutY="421.0" prefHeight="57.0" prefWidth="141.0" styleClass="loginButton" stylesheets="@LoginStyles.css" text="Log-in" textFill="WHITE">
+                  <JFXButton fx:id="loginBtn" layoutX="217.0" layoutY="421.0" onAction="#login" prefHeight="57.0" prefWidth="141.0" styleClass="loginButton" stylesheets="@LoginStyles.css" text="Log-in" textFill="WHITE">
                      <font>
                         <Font name="Consolas" size="14.0" />
                      </font>

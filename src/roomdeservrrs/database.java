@@ -11,12 +11,12 @@ import java.sql.DriverManager;
  * @author velas
  */
 public class database {
-    
+     
     public static Connection connectDb() {
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connect = DriverManager.getConnection("jdbc:mysql:localhost:3306/rrsdatabase","root","");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/rrsdatabase","root","");
             return connect;
         } catch(Exception e) {}
         return null;
