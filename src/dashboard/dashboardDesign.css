@@ -1,0 +1,28 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 05 16, 23, 9:49:43 PM
+    Author     : Ervhyne
+*/
+
+.top-form {
+    -fx-background-color: #fff;
+    -fx-border-color: #000;
+    -fx-border-width: .4px .4px .3px .4px ;
+}
+
+.nav-form {
+    -fx-background-color: #292b2f;
+}
+
+.nav-btn {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.signout-btn {
+    -fx-background-color: #40444b;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .4), 15, 0.5, 0.0, 0.0);
+}
