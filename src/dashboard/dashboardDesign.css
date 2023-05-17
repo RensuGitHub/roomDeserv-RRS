@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .4), 15, 0.5, 0.0, 0.0);
 }
 
-.white-bg {
+.light-bg {
     -fx-background-color: #2d2d2d;
     -fx-background-radius: 10px;
 }
@@ -45,4 +45,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .card {
     -fx-background-color: #676769;
     -fx-background-radius: 5px;    
+}
+
+.dashboard-close {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+
+.dashboard-close:hover {
+    -fx-background-color: #FF605C;
+}
+
+.dashboard-minimize {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+
+.dashboard-minimize:hover {
+    -fx-background-color: #e4e3e3;
 }
