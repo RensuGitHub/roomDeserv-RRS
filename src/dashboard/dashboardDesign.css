@@ -13,6 +13,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: .4px .4px .3px .4px ;
 }
 
+.main-top-form{
+    -fx-background-color: #ddd;
+    -fx-border-color: #000;
+    -fx-border-width: 0px 0px .4px 0px ;    
+}
+
 .nav-form {
     -fx-background-color: #292b2f;
 }
@@ -25,4 +31,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #40444b;
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .4), 15, 0.5, 0.0, 0.0);
+}
+
+.white-bg {
+    -fx-background-color: #2d2d2d;
+    -fx-background-radius: 10px;
+}
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .4), 4, 0, 0, 0);
+}
+
+.card {
+    -fx-background-color: #676769;
+    -fx-background-radius: 5px;    
 }

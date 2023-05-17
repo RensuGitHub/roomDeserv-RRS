@@ -19,18 +19,18 @@
                <children>
                   <BorderPane layoutX="213.0" layoutY="277.0" prefHeight="700.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <top>
-                        <AnchorPane prefHeight="55.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="36.0" prefWidth="1100.0" styleClass="main-top-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane layoutX="86.0" layoutY="-82.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane layoutX="86.0" layoutY="-82.0" prefHeight="47.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button layoutX="1056.0" layoutY="2.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="45.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-                                       <graphic>
-                                          <FontAwesomeIconView glyphName="CLOSE" size="1.2em" text="" />
-                                       </graphic>
-                                    </Button>
                                     <Button layoutX="1008.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="MINUS" size="1.2em" text="" />
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutX="1053.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CLOSE" size="1.2em" />
                                        </graphic>
                                     </Button>
                                  </children>
@@ -41,7 +41,7 @@
                      <left>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane layoutX="7.0" layoutY="-18.0" prefHeight="663.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-18.0">
+                              <AnchorPane layoutX="7.0" prefHeight="664.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <FontAwesomeIconView fill="#fcfafa" glyphName="USER" layoutX="62.0" layoutY="119.0" size="8em" text="" />
                                     <Label layoutX="66.0" layoutY="135.0" text="Welcome" textFill="#e4e6eb">
@@ -55,27 +55,27 @@
                                        </font>
                                     </Label>
                                     <Line endX="151.0" layoutX="34.0" layoutY="196.0" startX="-17.5" stroke="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.5" />
-                                    <JFXButton layoutX="11.0" layoutY="220.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #00B140;" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard">
+                                    <JFXButton layoutX="11.0" layoutY="220.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard" textFill="#fffefe">
                                        <graphic>
-                                          <FontAwesomeIconView glyphName="DASHBOARD" size="1.2em" />
+                                          <FontAwesomeIconView fill="#bcb7b7" glyphName="DASHBOARD" size="1.5em" text="" />
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton layoutX="11.0" layoutY="264.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #00B140;" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Rooms" AnchorPane.topAnchor="264.0">
+                                    <JFXButton layoutX="11.0" layoutY="255.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Rooms" textFill="#fffefe" AnchorPane.topAnchor="255.0">
                                        <graphic>
-                                          <FontAwesomeIconView glyphName="CHECK_CIRCLE" size="1.2em" />
+                                          <FontAwesomeIconView fill="#bcb7b7" glyphName="CHECK_CIRCLE" size="1.5em" />
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton layoutX="11.0" layoutY="307.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #00B140;" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Requests">
+                                    <JFXButton layoutX="11.0" layoutY="290.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Requests" textFill="#fffefe">
                                        <graphic>
-                                          <FontAwesomeIconView glyphName="INBOX" size="1.2em" />
+                                          <FontAwesomeIconView fill="#bcb7b7" glyphName="INBOX" size="1.5em" text="" />
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton layoutX="16.0" layoutY="595.0" prefHeight="43.0" prefWidth="120.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
+                                    <JFXButton layoutX="18.0" layoutY="616.0" prefHeight="20.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
                                        <graphic>
-                                          <FontAwesomeIconView glyphName="SIGN_OUT" size="2.5em" text="" />
+                                          <FontAwesomeIconView glyphName="SIGN_OUT" size="2.0em" text="" />
                                        </graphic>
                                        <font>
-                                          <Font name="Tahoma" size="15.0" />
+                                          <Font name="Tahoma" size="12.0" />
                                        </font>
                                        <styleClass>
                                           <String fx:value="signout-form" />
@@ -87,6 +87,25 @@
                            </children>
                         </AnchorPane>
                      </left>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane layoutX="183.0" layoutY="264.0" prefHeight="664.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="12.0" layoutY="14.0" prefHeight="200.0" prefWidth="877.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <AnchorPane layoutX="14.0" layoutY="10.0" prefHeight="180.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
                   </BorderPane>
                </children>
             </AnchorPane>
