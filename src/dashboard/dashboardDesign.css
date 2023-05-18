@@ -66,3 +66,60 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .dashboard-minimize:hover {
     -fx-background-color: #e4e3e3;
 }
+
+.infoField {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #f49446;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-font-family: "Tahoma"; 
+
+}
+
+.combo-box {
+    -fx-background-color: #404040;
+    -fx-background-radius: 5px;
+    -fx-border-color: #537e90;
+    -fx-border-width: .8px;
+    -fx-border-radius: .5px;
+    -fx-font-size: 13px;
+    -fx-font-family: "Tahoma"; 
+}
+    /*-fx-border-color: linear-gradient(to bottom right, #2f3f89, #537e90);*/
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #537e90;
+    -fx-padding: 0px;
+    -fx-border-radius: 8px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom right, #2f3f89, #537e90);
+    -fx-background-insets: 0 0 0 0;
+
+}
+
+.table-view .column-header, .filter{
+    -fx-background-color: transparent;
+    -fx-size: 50px;
+}
+
+.table-view .column-header, .label{
+    -fx-text-fill: #fff;
+    -fx-size: 50px;
+}
+
+.search {
+    -fx-background-color:transparent;
+    -fx-background-radius: 15px;
+    -fx-border-color: white;
+    -fx-border-radius: 10px 10px 10px 10px;
+    -fx-border-width:1px;
+    -fx-padding: 0px 0px 0px 30px;
+    -fx-font-color:white;
+    -fx-text-fill: white;
+}
+
+.search-focused {
+    -fx-border-width: .8px;
+}

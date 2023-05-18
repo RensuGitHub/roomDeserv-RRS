@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,9 +19,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="dashboardWholePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" fx:id="dashboardWholePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane prefHeight="700.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -44,9 +47,9 @@
                         </AnchorPane>
                      </top>
                      <left>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane layoutX="7.0" prefHeight="664.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="670.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <FontAwesomeIconView fill="#fcfafa" glyphName="USER" layoutX="62.0" layoutY="119.0" size="8em" text="" />
                                     <Label layoutX="66.0" layoutY="135.0" text="Welcome" textFill="#e4e6eb">
@@ -60,7 +63,7 @@
                                        </font>
                                     </Label>
                                     <Line endX="151.0" layoutX="34.0" layoutY="196.0" startX="-17.5" stroke="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.5" />
-                                    <JFXButton layoutX="11.0" layoutY="220.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard" textAlignment="CENTER" textFill="#fffefe">
+                                    <JFXButton layoutX="10.0" layoutY="218.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard" textAlignment="CENTER" textFill="#fffefe">
                                        <graphic>
                                           <FontAwesomeIconView fill="#bcb7b7" glyphName="DASHBOARD" size="2em" text="" wrappingWidth="24.0" />
                                        </graphic>
@@ -68,7 +71,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton layoutX="11.0" layoutY="255.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Available Rooms" textFill="#fffefe" AnchorPane.topAnchor="255.0">
+                                    <JFXButton layoutX="11.0" layoutY="255.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text=" Available Rooms" textFill="#fffefe" AnchorPane.topAnchor="255.0">
                                        <graphic>
                                           <FontAwesomeIconView fill="#bcb7b7" glyphName="CHECK_CIRCLE" size="2em" />
                                        </graphic>
@@ -76,7 +79,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton layoutX="11.0" layoutY="290.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Requests" textFill="#fffefe">
+                                    <JFXButton layoutX="11.0" layoutY="290.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text=" Requests" textFill="#fffefe">
                                        <graphic>
                                           <FontAwesomeIconView fill="#bcb7b7" glyphName="ARROW_CIRCLE_DOWN" size="2em" />
                                        </graphic>
@@ -84,7 +87,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton layoutX="14.0" layoutY="717.0" prefHeight="20.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
+                                    <JFXButton layoutX="14.0" layoutY="623.0" prefHeight="20.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SIGN_OUT" size="2.0em" text="" />
                                        </graphic>
@@ -102,9 +105,9 @@
                         </AnchorPane>
                      </left>
                      <center>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1d1d1d;" BorderPane.alignment="CENTER">
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1001.0" style="-fx-background-color: #1d1d1d;" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane prefHeight="664.0" prefWidth="900.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane prefHeight="670.0" prefWidth="1001.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="12.0" layoutY="14.0" prefHeight="232.0" prefWidth="635.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
@@ -158,29 +161,86 @@
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="13.0" layoutY="256.0" prefHeight="494.0" prefWidth="975.0" stylesheets="@dashboardDesign.css">
+                                    <AnchorPane layoutX="13.0" layoutY="256.0" prefHeight="400.0" prefWidth="975.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
                                           <String fx:value="light-bg" />
                                           <String fx:value="shadow" />
                                        </styleClass>
+                                       <children>
+                                          <TextField layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" stylesheets="@dashboardDesign.css">
+                                             <styleClass>
+                                                <String fx:value="search" />
+                                                <String fx:value="search-focused" />
+                                             </styleClass>
+                                          </TextField>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="25.0" layoutY="36.0" size="1.5EM" text="" wrappingWidth="16.714284896850586" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="17.0" />
+                                       </children>
                                     </AnchorPane>
-                                    <ImageView fitHeight="212.0" fitWidth="295.0" layoutX="734.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/reservelogo1.png" />
-                                       </image>
-                                    </ImageView>
+                                    <TableView layoutX="23.0" layoutY="309.0" prefHeight="323.0" prefWidth="954.0" stylesheets="@dashboardDesign.css">
+                                       <columns>
+                                          <TableColumn prefWidth="50.0" text="Floor #" />
+                                          <TableColumn prefWidth="50.0" text="Room #" />
+                                          <TableColumn prefWidth="125.0" text="Status" />
+                                          <TableColumn prefWidth="121.0" text="Course/Year/Section" />
+                                          <TableColumn prefWidth="84.0" text="Date" />
+                                          <TableColumn text="Time-in" />
+                                          <TableColumn text="Time-out" />
+                                          <TableColumn prefWidth="120.0" text="Subject Code" />
+                                          <TableColumn prefWidth="243.0" text="Professor" />
+                                       </columns>
+                                    </TableView>
+                                    <PieChart layoutX="694.0" layoutY="31.0" prefHeight="174.0" prefWidth="257.0" styleClass="card" stylesheets="@dashboardDesign.css" title="Pie" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="214.0" layoutY="194.0" prefHeight="664.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane layoutX="214.0" layoutY="194.0" prefHeight="670.0" prefWidth="1001.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="723.0" prefWidth="357.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
+                                    <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="635.0" prefWidth="357.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
                                        <children>
-                                          <TextField layoutX="179.0" layoutY="81.0" />
-                                          <TextField layoutX="179.0" layoutY="115.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="86.0" prefHeight="15.0" prefWidth="155.0" text="Floor #:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="120.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Room #:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox layoutX="179.0" layoutY="149.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" AnchorPane.topAnchor="149.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="154.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Status:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="188.0" prefHeight="15.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Course/Year/Section:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="221.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Time Duration:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="254.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Subject:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <JFXButton layoutX="36.0" layoutY="318.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Add" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+                                          <JFXButton layoutX="214.0" layoutY="318.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
+                                          <JFXButton layoutX="36.0" layoutY="369.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Clear" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+                                          <JFXButton layoutX="164.0" layoutY="369.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
+                                          <JFXButton layoutX="114.0" layoutY="429.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Upload" textFill="WHITE" />
+                                          <JFXTextField focusColor="#fcfcfc" layoutX="179.0" layoutY="82.0" prefHeight="14.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <JFXTextField focusColor="#fcfcfc" layoutX="179.0" layoutY="115.0" prefHeight="19.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <JFXTextField focusColor="#fcfcfc" layoutX="179.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <JFXTextField focusColor="#fcfcfc" layoutX="179.0" layoutY="216.0" prefHeight="18.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <JFXTextField focusColor="#fcfcfc" layoutX="179.0" layoutY="249.0" prefHeight="19.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
                                        </children></AnchorPane>
-                                    <AnchorPane layoutX="383.0" layoutY="20.0" prefHeight="717.0" prefWidth="606.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
+                                    <AnchorPane layoutX="383.0" layoutY="20.0" prefHeight="635.0" prefWidth="606.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
                                        <children>
-                                          <TableView layoutX="14.0" layoutY="111.0" prefHeight="580.0" prefWidth="580.0">
+                                          <TableView layoutX="13.0" layoutY="48.0" prefHeight="574.0" prefWidth="580.0">
                                             <columns>
                                               <TableColumn prefWidth="75.0" text="Floor #" />
                                               <TableColumn prefWidth="75.0" text="Room #" />
@@ -190,8 +250,12 @@
                                                 <TableColumn prefWidth="124.0" text="Subject" />
                                             </columns>
                                           </TableView>
-                                          <TextField layoutX="43.0" layoutY="44.0" promptText="Search" stylesheets="@dashboardDesign.css" />
-                                          <FontAwesomeIconView glyphName="SEARCH" layoutX="51.0" layoutY="60.0" size="1.2em" />
+                                          <TextField layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" stylesheets="@dashboardDesign.css">
+                                             <styleClass>
+                                                <String fx:value="search" />
+                                                <String fx:value="search-focused" />
+                                             </styleClass></TextField>
+                                          <FontAwesomeIconView fill="#fcfcfc" glyphName="SEARCH" layoutX="23.0" layoutY="33.0" size="1.5em" text="" AnchorPane.leftAnchor="24.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
