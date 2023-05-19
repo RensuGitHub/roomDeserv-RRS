@@ -82,7 +82,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: .8px;
     -fx-border-radius: .5px;
     -fx-font-size: 13px;
-    -fx-font-family: "Tahoma"; 
+    -fx-font-family: "Tahoma";
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #9a9393;
+}
+
+.combo-box .list-cell:focused {
+    -fx-text-fill: white;
+}
+
+.combo-box .list-view .list-cell:focused {
+    -fx-background-color: #9a9393;
+}
+
+.combo-box .arrow, .combo-box .arrow-button{
+    -fx-background-color: white;
 }
     /*-fx-border-color: linear-gradient(to bottom right, #2f3f89, #537e90);*/
 
@@ -123,3 +139,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .search-focused {
     -fx-border-width: .8px;
 }
+
+
