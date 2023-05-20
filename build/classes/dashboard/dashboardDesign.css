@@ -97,6 +97,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #9a9393;
 }
 
+.combo-box .arrow, .combo-box .arrow-button{
+    -fx-background-color: white;
+}
     /*-fx-border-color: linear-gradient(to bottom right, #2f3f89, #537e90);*/
 
 .table-view {
@@ -109,6 +112,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header-background {
     -fx-background-color: linear-gradient(to bottom right, #2f3f89, #537e90);
     -fx-background-insets: 0 0 0 0;
+
 }
 
 .table-view .column-header, .filter{
