@@ -9,25 +9,20 @@ package dashboard;
  * @author Ervhyne
  */
 public class roomData {
-    private Integer floorNumber;
     private Integer roomNumber;
     private String status;
     private String cys;
     private String timeDuration;
     private String subject;
 
-    public roomData(Integer floorNumber, Integer roomNumber, String status, String cys, String timeDuration, String subject){
-        this.floorNumber = floorNumber;
+    public roomData(int roomNumber, String status, String cys, String timeDuration, String subject){
         this.roomNumber = roomNumber;
         this.status = status;
         this.cys = cys;
         this.timeDuration = timeDuration;
         this.subject = subject;
     }
-    
-    public Integer getFloorNumber(){
-        return floorNumber;
-    }
+ 
     
     public Integer getRoomNumber(){
         return roomNumber;

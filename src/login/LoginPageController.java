@@ -23,8 +23,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import roomdeservrrs.database;
 import roomdeservrrs.database;
 import roomdeservrrs.database;
@@ -33,8 +35,6 @@ import roomdeservrrs.database;
  *
  * @author velas
  */
-
-
 public class LoginPageController {
 
     @FXML
@@ -57,72 +57,101 @@ public class LoginPageController {
 
     @FXML
     private JFXButton loginExit;
-    
+
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-    
+
+    private double x = 0;
+    private double y = 0;
+
     public void login() {
-        
+
         String user = loginUsername.getText();
         String pass = loginPassword.getText();
         String sql = "SELECT * FROM users WHERE username = ? and password = ?";
-        
+
         connect = database.connectDb();
         try {
             prepare = connect.prepareCall(sql);
             prepare.setString(1, user);
             prepare.setString(2, pass);
-            
+
             result = prepare.executeQuery();
-            
+
             Alert alert;
-            if (user.isEmpty() || pass.isEmpty()){
+            if (user.isEmpty() || pass.isEmpty()) {
                 alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
                 alert.setContentText("Please fill all the blank fields");
                 alert.showAndWait();
-            }else {
-                if(result.next()) {
-                alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Login Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Succesfully Login!");
-                alert.showAndWait();
-                
-                
-                //to hide the login form
-                loginBtn.getScene().getWindow().hide();
-                
-                Parent root = FXMLLoader.load(getClass().getResource("/dashboard/Dashboard.fxml"));
-                  
-
-                
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-                
-                stage.setScene(scene);
-                stage.show();
-                
             } else {
-                alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Loggin Message");
-                alert.setHeaderText(null);
-                alert.setContentText("Invalid Username or Password!");
-                alert.showAndWait();
-            }
+                if (result.next()) {
+                    alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Login Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Succesfully Login!");
+                    alert.showAndWait();
+
+                    //to hide the login form
+                    loginBtn.getScene().getWindow().hide();
+
+                    Parent root = FXMLLoader.load(getClass().getResource("/dashboard/Dashboard.fxml"));
+
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+
+                    root.setOnMousePressed((MouseEvent event) -> {
+                        x = event.getSceneX();
+                        y = event.getSceneY();
+                    });
+
+                    root.setOnMousePressed((MouseEvent event) -> {
+                        stage.setX(event.getScreenX() - x);
+                        stage.setY(event.getScreenX() - y);
+
+                    });
+
+                    root.setOnMouseDragged((javafx.scene.input.MouseEvent event) -> {
+                        stage.setX(event.getScreenX() - x);
+                        stage.setY(event.getScreenY() - y);
+
+                        stage.setOpacity(.8);
+                    });
+
+                    root.setOnMouseReleased((javafx.scene.input.MouseEvent event) -> {
+                        stage.setOpacity(1);
+                    });
+
+                    Image icon = new Image(getClass().getResourceAsStream("/img/appicon.png"));
+                    stage.getIcons().add(icon);
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
+
+                    stage.setScene(scene);
+                    stage.show();
+
+                } else {
+                    alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Loggin Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Invalid Username or Password!");
+                    alert.showAndWait();
+                }
 
             }
-        }catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    
-    public void loginExit () {
+
+    public void loginExit() {
         System.exit(0);
     }
-    
+
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
-    
+
 }

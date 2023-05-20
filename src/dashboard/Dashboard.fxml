@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="dashboardWholePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+<AnchorPane id="AnchorPane" fx:id="main_form" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
    <children>
       <StackPane prefHeight="700.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -31,14 +31,14 @@
                            <children>
                               <AnchorPane layoutX="86.0" layoutY="-82.0" prefHeight="31.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button layoutX="1110.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" styleClass="dashboard-minimize" stylesheets="@dashboardDesign.css">
+                                    <Button fx:id="minimizeBtn" layoutX="1110.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="45.0" styleClass="dashboard-minimize" stylesheets="@dashboardDesign.css">
                                        <graphic>
-                                          <FontAwesomeIconView fx:id="minimizeBtn" glyphName="MINUS" size="1.2em" text="" />
+                                          <FontAwesomeIconView glyphName="MINUS" size="1.2em" text="" />
                                        </graphic>
                                     </Button>
-                                    <Button layoutX="1155.0" layoutY="2.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" styleClass="dashboard-close" stylesheets="@dashboardDesign.css">
+                                    <Button fx:id="closeBtn" layoutX="1155.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="45.0" styleClass="dashboard-close" stylesheets="@dashboardDesign.css">
                                        <graphic>
-                                          <FontAwesomeIconView fx:id="closeBtn" glyphName="CLOSE" size="1.2em" text="" />
+                                          <FontAwesomeIconView glyphName="CLOSE" size="1.2em" text="" />
                                        </graphic>
                                     </Button>
                                  </children>
@@ -51,7 +51,7 @@
                            <children>
                               <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="670.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <FontAwesomeIconView fill="#fcfafa" glyphName="USER" layoutX="62.0" layoutY="119.0" size="8em" text="" />
+                                    <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="62.0" layoutY="119.0" size="8em" text="" />
                                     <Label layoutX="66.0" layoutY="135.0" text="Welcome" textFill="#e4e6eb">
                                        <font>
                                           <Font name="Tahoma" size="17.0" />
@@ -87,7 +87,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </JFXButton>
-                                    <JFXButton fx:id="logout_btn" layoutX="14.0" layoutY="623.0" prefHeight="20.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
+                                    <JFXButton fx:id="logout_btn" layoutX="14.0" layoutY="623.0" onAction="#logout" prefHeight="20.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
                                        <graphic>
                                           <FontAwesomeIconView glyphName="SIGN_OUT" size="2.0em" text="" />
                                        </graphic>
@@ -196,17 +196,12 @@
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="635.0" prefWidth="357.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="86.0" prefHeight="15.0" prefWidth="155.0" text="Floor #:" textFill="WHITE">
-                                             <font>
-                                                <Font name="Arial" size="12.0" />
-                                             </font>
-                                          </Label>
                                           <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="120.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Room #:" textFill="WHITE">
                                              <font>
                                                 <Font name="Arial" size="12.0" />
                                              </font>
                                           </Label>
-                                          <ComboBox fx:id="mr_status" layoutX="179.0" layoutY="149.0" onAction="#mrAdd" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" AnchorPane.topAnchor="149.0" />
+                                          <ComboBox fx:id="mr_status" layoutX="179.0" layoutY="149.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" AnchorPane.topAnchor="149.0" />
                                           <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="154.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Status:" textFill="WHITE">
                                              <font>
                                                 <Font name="Arial" size="12.0" />
@@ -228,26 +223,24 @@
                                              </font>
                                           </Label>
                                           <JFXButton fx:id="mr_addBtn" layoutX="36.0" layoutY="318.0" onAction="#mrAdd" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Add" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
-                                          <JFXButton fx:id="mr_updateBtn" layoutX="214.0" layoutY="318.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
-                                          <JFXButton fx:id="mr_clearBtn" layoutX="36.0" layoutY="369.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Clear" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
-                                          <JFXButton fx:id="mr_deleteBtn" layoutX="164.0" layoutY="369.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
+                                          <JFXButton fx:id="mr_updateBtn" layoutX="214.0" layoutY="318.0" onAction="#mrUpdate" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
+                                          <JFXButton fx:id="mr_clearBtn" layoutX="36.0" layoutY="369.0" onAction="#mrClear" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Clear" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+                                          <JFXButton fx:id="mr_deleteBtn" layoutX="164.0" layoutY="369.0" onAction="#mrDelete" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
                                           <JFXButton fx:id="mr_uploadBtn" layoutX="114.0" layoutY="429.0" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Upload" textFill="WHITE" />
-                                          <JFXTextField fx:id="mr_floorNum" focusColor="#fcfcfc" layoutX="179.0" layoutY="82.0" prefHeight="14.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
                                           <JFXTextField fx:id="mr_roomNum" focusColor="#fcfcfc" layoutX="179.0" layoutY="115.0" prefHeight="19.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
                                           <JFXTextField fx:id="mr_cys" focusColor="#fcfcfc" layoutX="179.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
                                           <JFXTextField fx:id="mr_subject" focusColor="#fcfcfc" layoutX="179.0" layoutY="249.0" prefHeight="19.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
-                                          <ComboBox fx:id="mr_timeDuration" layoutX="179.0" layoutY="215.0" onAction="#mrAdd" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" />
+                                          <ComboBox fx:id="mr_timeDuration" layoutX="179.0" layoutY="215.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" />
                                        </children></AnchorPane>
                                     <AnchorPane layoutX="383.0" layoutY="20.0" prefHeight="635.0" prefWidth="606.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
                                        <children>
-                                          <TableView fx:id="mr_tableView" layoutX="13.0" layoutY="48.0" prefHeight="574.0" prefWidth="580.0">
+                                          <TableView fx:id="mr_tableView" layoutX="13.0" layoutY="47.0" onMouseClicked="#mrSelectData" prefHeight="574.0" prefWidth="580.0">
                                             <columns>
-                                              <TableColumn fx:id="mr_col_floorNum" prefWidth="75.0" text="Floor #" />
                                               <TableColumn fx:id="mr_col_roomNum" prefWidth="75.0" text="Room #" />
                                                 <TableColumn fx:id="mr_col_status" prefWidth="75.0" text="Status" />
                                                 <TableColumn fx:id="mr_col_cys" prefWidth="132.0" text="Course/Year/Section" />
                                                 <TableColumn fx:id="mr_col_timeDuration" prefWidth="98.0" text="Time Duration" />
-                                                <TableColumn fx:id="mr_col_subject" prefWidth="124.0" text="Subject" />
+                                                <TableColumn fx:id="mr_col_subject" prefWidth="199.0" text="Subject Code" />
                                             </columns>
                                           </TableView>
                                           <TextField fx:id="mr_search" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" stylesheets="@dashboardDesign.css">
