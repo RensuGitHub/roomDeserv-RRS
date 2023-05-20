@@ -253,7 +253,7 @@ public class DashboardController implements Initializable {
         String sql = "UPDATE room SET status = '"
                 + status1 + "', timeDuration = '" + timeDuration1
                 + "', cys = '" + cys1 + "', subject = '" + subject1
-                + "' WHERE roomNum ='" + roomNum + "'";
+                + "' WHERE roomNumber ='" + roomNum + "'";
 
         connect = database.connectDb();
 
