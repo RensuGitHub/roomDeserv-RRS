@@ -152,6 +152,7 @@ public class DashboardController implements Initializable {
     }
     
     // DASHBOARD Count // CURRENTLY WORKING ON IT.
+    /*
     public void dashboardCount() {
         Date date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
@@ -159,10 +160,28 @@ public class DashboardController implements Initializable {
         String sql = "SELECT * schedule WHERE entryTime = '"+sqlDate+"'";
 
         connect = database.connectDb();
-
+        
+        int count = 0;
+        
         try {
             prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            while(result.next()) {
+                count = result.getInt("COUNT(id)");
+            }
+            System.out.println(count);
+            dashboard_roomsAvailable.setText(String.valueOf(count));
         } catch(Exception e){e.printStackTrace();}
+    }
+    
+    */
+    
+    // Test
+    
+    public void availableCount() {
+        
+        String sql = "SELECT COUNT * AS count FROM room WHERE status = 'Vacant'";
+        
     }
     
     

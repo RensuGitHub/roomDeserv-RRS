@@ -4,6 +4,10 @@
  */
 package upload;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author Ervhyne
@@ -14,3 +18,4 @@ public class getData {
     public static String Username;
     
 }
+

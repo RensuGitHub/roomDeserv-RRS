@@ -130,7 +130,7 @@
                                                       <String fx:value="nav-form" />
                                                    </styleClass>
                                                    <children>
-                                                      <Label layoutX="56.0" layoutY="16.0" prefHeight="33.0" prefWidth="130.0" text="0">
+                                                      <Label fx:id="dashboard_roomsOccupied" layoutX="56.0" layoutY="16.0" prefHeight="33.0" prefWidth="130.0" text="0">
                                                          <font>
                                                             <Font name="Berlin Sans FB" size="30.0" />
                                                          </font>
