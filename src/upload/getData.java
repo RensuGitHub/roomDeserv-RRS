@@ -11,5 +11,6 @@ package upload;
 public class getData {
     
     public static String prof;
+    public static String Username;
     
 }

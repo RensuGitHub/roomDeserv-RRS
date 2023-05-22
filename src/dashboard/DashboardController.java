@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -43,6 +44,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.JOptionPane;
 import roomdeservrrs.database;
+import upload.getData;
 
 /**
  * FXML Controller class
@@ -141,7 +143,29 @@ public class DashboardController implements Initializable {
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
+    
+    // DASHBOARD Navigation Menu
+    
+    // Username 
+    public void displayUsername() {
+        username.setText(getData.Username);
+    }
+    
+    // DASHBOARD Count // CURRENTLY WORKING ON IT.
+    public void dashboardCount() {
+        Date date = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 
+        String sql = "SELECT * schedule WHERE entryTime = '"+sqlDate+"'";
+
+        connect = database.connectDb();
+
+        try {
+            prepare = connect.prepareStatement(sql);
+        } catch(Exception e){e.printStackTrace();}
+    }
+    
+    
     // Executing commands for SQL Preparation, fow window 'MANAGE ROOM/Manage Room'
     public ObservableList<roomData> mrListData() {
         ObservableList<roomData> listData = FXCollections.observableArrayList();
@@ -666,6 +690,7 @@ public class DashboardController implements Initializable {
     // Execute Commands / Initilize (Execute Order 66!)
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        displayUsername();
         mrTimeDuration();
         mrStatus();
         

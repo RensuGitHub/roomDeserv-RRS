@@ -30,6 +30,7 @@ import javafx.stage.StageStyle;
 import roomdeservrrs.database;
 import roomdeservrrs.database;
 import roomdeservrrs.database;
+import upload.getData;
 
 /**
  *
@@ -88,6 +89,9 @@ public class LoginPageController {
                 alert.showAndWait();
             } else {
                 if (result.next()) {
+                    
+                    getData.Username = loginUsername.getText();
+                    
                     alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Login Message");
                     alert.setHeaderText(null);

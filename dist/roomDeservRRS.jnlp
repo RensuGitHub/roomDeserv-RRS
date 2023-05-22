@@ -13,7 +13,7 @@
     <jar href="lib\jfoenix-8.0.10.jar" size="2710207" download="eager" />
     <jar href="lib\mysql-connector-j-8.0.33.jar" size="2481560" download="eager" />
     <jar href="lib\ojdbc14-10.2.0.2.0.jar" size="1545954" download="eager" />
-    <jar href="roomDeservRRS.jar" size="618331" download="eager" />
+    <jar href="roomDeservRRS.jar" size="618698" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="roomdeservrrs.Main"  name="roomDeservRRS" />
   <update check="always"/>
