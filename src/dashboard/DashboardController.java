@@ -1,4 +1,4 @@
- /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
@@ -18,6 +18,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -72,9 +75,8 @@ public class DashboardController implements Initializable {
     private Label dashboard_roomsAvailable;
     @FXML
     private TextField dashboard_search;
-    
+
     // Manage Room <DashboardController, uploadData>
-    
     @FXML
     private TableView<uploadData> dashboard_tableView;
     @FXML
@@ -140,6 +142,7 @@ public class DashboardController implements Initializable {
     private Statement statement;
     private ResultSet result;
 
+    // Executing commands for SQL Preparation, fow window 'MANAGE ROOM/Manage Room'
     public ObservableList<roomData> mrListData() {
         ObservableList<roomData> listData = FXCollections.observableArrayList();
 
@@ -168,9 +171,10 @@ public class DashboardController implements Initializable {
         return listData;
     }
 
-  // Manage Room - Show List of Data 
-    
+    // Manage Room - DISPLAY/SHOW List of Data 
+    // Use " mrShowData(); " in any possible fit of a situation. 
     private ObservableList<roomData> roomDataList;
+
     public void mrShowData() {
 
         roomDataList = mrListData();
@@ -184,15 +188,14 @@ public class DashboardController implements Initializable {
 
     }
 
- 
-    // DASHBOARD - Show List of Schedules
-    
-    public ObservableList<uploadData> scheduleListData(){
+    // Fixed. Omegalul - 05/22/2023 - Fixed the SQL lines and it's unnecessaries
+    // Executing commands for SQL Preparation, fow window 'DASHBOARD/Dashboard'
+    public ObservableList<uploadData> scheduleListData() {
         ObservableList<uploadData> listData = FXCollections.observableArrayList();
 
         String sql = "SELECT * FROM schedule";
         connect = database.connectDb();
-        
+
         try {
             uploadData schedD;
 
@@ -202,7 +205,6 @@ public class DashboardController implements Initializable {
             while (result.next()) {
                 schedD = new uploadData(result.getInt("roomNum"),
                         result.getString("prof"),
-                        result.getString("status"),
                         result.getString("course"),
                         result.getString("yrndsec"),
                         result.getString("subjectCode"),
@@ -217,18 +219,17 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
 
-        
         return listData;
-    }    
-    
+    }
+
     // DASHBOARD - Show All Data in Table
-    
+    // DASHBOARD - Show List of Schedules
     private ObservableList<uploadData> listUploadData;
+
     public void scheduleShowData() {
         listUploadData = scheduleListData();
-        
+
         sched_roomNum.setCellValueFactory(new PropertyValueFactory<>("roomNum"));
-        sched_status.setCellValueFactory(new PropertyValueFactory<>("status"));
         sched_course.setCellValueFactory(new PropertyValueFactory<>("course"));
         sched_yearsec.setCellValueFactory(new PropertyValueFactory<>("yrndsec"));
         sched_entryTime.setCellValueFactory(new PropertyValueFactory<>("entryTime"));
@@ -241,9 +242,120 @@ public class DashboardController implements Initializable {
 
     }
     
+    /* NAVIGATION BUTTONS (SWITCHING FORMS)
+    *   [DASHBOARD BUTTON] [MANAGE ROOMS]
+    */
+    
+    public void switchForm(ActionEvent event) {
+        
+        // Dashboard Button - show Data & re-enable Search
+        
+        if(event.getSource() == dashboard_btn) {
+            dashboard_form.setVisible(true);
+            manageRooms_form.setVisible(false);
+            System.out.println("Switched to Dashboard.");
+            
+            scheduleShowData();
+            scheduleSearch();
+        
+        // Manage Room Button - show Data & re-enable Search    
+        
+        } else if(event.getSource() == manageRooms_btn) {
+            dashboard_form.setVisible(false);
+            manageRooms_form.setVisible(true);
+            System.out.println("Switched to Manage Rooms.");
+            
+            mrShowData();
+            scheduleSearch();
+            mrSearch();
+        }
+    }
+    
+    // DASHBOARD - Search Bar
+    public void scheduleSearch() {
 
+        FilteredList<uploadData> filter = new FilteredList<>(listUploadData, e -> true);
+
+        dashboard_search.textProperty().addListener((Observable, oldValue, newValue) -> {
+            filter.setPredicate(predicateSchedule -> {
+
+                if (newValue == null && newValue.isEmpty()) {
+                    return true;
+                }
+
+                String searchKey = newValue.toLowerCase();
+
+                if (predicateSchedule.getProf().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getClass().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getYrndsec().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getRoomNum().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getSubjectCode().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getEntryTime().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getExitTime().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateSchedule.getDate().toString().contains(searchKey)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
+        });
+        
+        SortedList<uploadData> sortList = new SortedList<>(filter);
+        
+        sortList.comparatorProperty().bind(dashboard_tableView.comparatorProperty());
+        dashboard_tableView.setItems(sortList);
+        
+        
+    }
+    
+    // MANAGE ROOM - Search Bar
+    public void mrSearch() {
+    
+        FilteredList<roomData> filter = new FilteredList<>(roomDataList, e -> true);
+
+        mr_search.textProperty().addListener((Observable, oldValue, newValue) -> {
+            filter.setPredicate(predicateRoom -> {
+
+                if (newValue == null && newValue.isEmpty()) {
+                    return true;
+                }
+
+                String searchKey = newValue.toLowerCase();
+
+                if (predicateRoom.getRoomNumber().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateRoom.getStatus().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateRoom.getCys().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateRoom.getTimeDuration().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else if (predicateRoom.getSubject().toString().toLowerCase().contains(searchKey)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
+        });
+        
+        SortedList<roomData> sortList = new SortedList<>(filter);
+        
+        sortList.comparatorProperty().bind(mr_tableView.comparatorProperty());
+        mr_tableView.setItems(sortList);
+        
+        
+    }
+    
     // Manage Room - Select Data in Table [ON-CLICK]
-
     public void mrSelectData() {
         roomData roomD = mr_tableView.getSelectionModel().getSelectedItem();
         int num = mr_tableView.getSelectionModel().getSelectedIndex();
@@ -256,9 +368,8 @@ public class DashboardController implements Initializable {
         mr_subject.setText(String.valueOf(roomD.getSubject()));
     }
 
-
     // Manage Room - Add Data [BUTTON]
-    
+    // After Adding, show the updated Table & Clear the Text Field after Updating.
     public void mrAdd() {
         String sql = "INSERT INTO room (roomNumber,status,cys,timeDuration,subject) VALUES(?,?,?,?,?)";
 
@@ -328,10 +439,9 @@ public class DashboardController implements Initializable {
         }
 
     }
-    
-    
-    // Manage Room - Update Data [BUTTON]
 
+    // Manage Room - Update Data [BUTTON]
+    // After Updating, show the updated Table & Clear the Text Field after Updating.
     public void mrUpdate() {
         String roomNum = mr_roomNum.getText();
         String status1 = (String) mr_status.getSelectionModel().getSelectedItem();
@@ -376,9 +486,8 @@ public class DashboardController implements Initializable {
         }
     }
 
-    
     // Manage Room - Delete Data [BUTTON]
-    
+    // After Deleting, show the updated Table & Clear the Text Field after Updating.
     public void mrDelete() {
         String roomNum = mr_roomNum.getText();
         String status1 = (String) mr_status.getSelectionModel().getSelectedItem();
@@ -435,7 +544,7 @@ public class DashboardController implements Initializable {
     }
 
     // Manage Room - Clear Text Field [BUTTON]
-    
+    // Clear Text Field
     public void mrClear() {
         mr_roomNum.setText("");
         mr_status.getSelectionModel().clearSelection();
@@ -443,22 +552,17 @@ public class DashboardController implements Initializable {
         mr_timeDuration.getSelectionModel().clearSelection();
         mr_subject.setText("");
     }
-    
-    
+
     // [SEND DATA TO DASHBOARD] Manage Room - Check-in Upload
-    
-    
     public void mrCheckIn() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/upload/upload.fxml"));
             Stage stage = new Stage();
             Scene scene = new Scene(root);
-            
-            
+
             int width = 690, height = 620;
-            stage.setMinHeight(400+15);
-            stage.setMinWidth(400+15);
-            
+            stage.setMinHeight(400 + 15);
+            stage.setMinWidth(400 + 15);
 
             Image icon = new Image(getClass().getResourceAsStream("/img/uploadrrsIcon.png"));
             stage.getIcons().add(icon);
@@ -471,11 +575,9 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-    private String[] status = {"Occupied", "Unoccupied"};
+    private String[] status = {"Deserved", "Vacant", "Room/Skill Issue", "Defense", "Admission"};
 
-    // Manage Room - Select Room Status / 
-    
-    
+    // Manage Room - Select Room Status 
     private void mrStatus() {
         List<String> listData = new ArrayList<>();
 
@@ -487,16 +589,13 @@ public class DashboardController implements Initializable {
         mr_status.setItems(list);
     }
 
-    
-    
     // Manage Room - Enter Time Duration
-    
-    private String duration[] = {"---", "1hr", "2hr", "3hr", "4hr", "5hr"};
-    
+    private String duration[] = {"---", "1hr", "2hr", "3hr", "4hr", "5hr", "Uncertain"};
+
     private void mrTimeDuration() {
         List<String> listData = new ArrayList<>();
 
-        for(String data : duration) {
+        for (String data : duration) {
             listData.add(data);
         }
 
@@ -506,9 +605,8 @@ public class DashboardController implements Initializable {
 
     private double x = 0;
     private double y = 0;
-    
-    // Dashboard Sign-out / Log-out
 
+    // Dashboard Sign-out / Log-out
     public void logout() {
         try {
 
@@ -554,21 +652,31 @@ public class DashboardController implements Initializable {
         }
     }
 
+    // All Window - Close Button
     public void close() {
         System.exit(0);
     }
 
+    // All Window - Minimize Button
     public void minimize() {
         Stage stage = (Stage) main_form.getScene().getWindow();
         stage.setIconified(true);
     }
 
+    // Execute Commands / Initilize (Execute Order 66!)
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mrTimeDuration();
         mrStatus();
         
+        // Shows Table Data in MANAGE ROOM Form
         mrShowData();
-        
+        // Shows Table Data in DASHBOARD Form
+        scheduleShowData();
+        // Enables Search Bar in DASHBOARD Form
+        scheduleSearch();
+        // Enables Search Bar in MANAGE ROOM Form
+        mrSearch();
+
     }
 }

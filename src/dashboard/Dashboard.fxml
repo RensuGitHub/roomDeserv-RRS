@@ -49,7 +49,7 @@
                                        </font>
                                     </Label>
                                     <Line endX="88.0" layoutX="113.0" layoutY="247.0" startX="-100.0" stroke="WHITE" />
-                                    <JFXButton fx:id="dashboard_btn" layoutX="14.0" layoutY="260.0" prefHeight="72.0" prefWidth="185.0" stylesheets="@dashboardDesign.css" text="Dashboard" textFill="WHITE">
+                                    <JFXButton fx:id="dashboard_btn" layoutX="14.0" layoutY="260.0" onAction="#switchForm" prefHeight="72.0" prefWidth="185.0" stylesheets="@dashboardDesign.css" text="Dashboard" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold Italic" size="18.0" />
                                        </font>
@@ -58,7 +58,7 @@
                                           <String fx:value="shadow" />
                                        </styleClass>
                                     </JFXButton>
-                                    <JFXButton fx:id="manageRooms_btn" layoutX="14.0" layoutY="348.0" prefHeight="72.0" prefWidth="185.0" stylesheets="@dashboardDesign.css" text="Manage Room" textFill="WHITE">
+                                    <JFXButton fx:id="manageRooms_btn" layoutX="14.0" layoutY="348.0" onAction="#switchForm" prefHeight="72.0" prefWidth="185.0" stylesheets="@dashboardDesign.css" text="Manage Room" textFill="WHITE">
                                        <font>
                                           <Font name="Arial Bold Italic" size="18.0" />
                                        </font>
@@ -92,7 +92,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1d1d1d;" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane prefHeight="650.0" prefWidth="986.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="dashboard_form" prefHeight="650.0" prefWidth="986.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="235.0" prefWidth="635.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
@@ -152,7 +152,7 @@
                                           <String fx:value="shadow" />
                                        </styleClass>
                                        <children>
-                                          <TextField fx:id="dashboard_search" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="220.0" promptText="Search" stylesheets="@dashboardDesign.css">
+                                          <TextField fx:id="dashboard_search" layoutX="14.0" layoutY="14.0" onKeyTyped="#scheduleSearch" prefHeight="27.0" prefWidth="220.0" promptText="Search" stylesheets="@dashboardDesign.css">
                                              <styleClass>
                                                 <String fx:value="search" />
                                                 <String fx:value="search-focused" />
@@ -163,15 +163,14 @@
                                     </AnchorPane>
                                     <TableView fx:id="dashboard_tableView" layoutX="28.0" layoutY="310.0" prefHeight="324.0" prefWidth="930.0" stylesheets="@dashboardDesign.css">
                                       <columns>
-                                        <TableColumn fx:id="sched_roomNum" prefWidth="60.000030517578125" text="Room #" />
-                                          <TableColumn fx:id="sched_status" prefWidth="113.0" text="Status" />
-                                          <TableColumn fx:id="sched_course" prefWidth="110.0" text="Course" />
-                                          <TableColumn fx:id="sched_yearsec" prefWidth="96.0" text="Year &amp; Section" />
-                                          <TableColumn fx:id="sched_date" prefWidth="92.0" text="Date" />
-                                          <TableColumn fx:id="sched_entryTime" prefWidth="73.0" text="Entry Time" />
-                                          <TableColumn fx:id="sched_exitTime" prefWidth="73.0" text="Exit Time" />
-                                          <TableColumn fx:id="sched_subjectCode" prefWidth="112.0" text="Subject Code" />
-                                          <TableColumn fx:id="sched_prof" prefWidth="199.0" text="Professor" />
+                                          <TableColumn fx:id="sched_prof" prefWidth="235.00003051757812" text="Professor" />
+                                          <TableColumn fx:id="sched_course" prefWidth="154.0" text="Course" />
+                                          <TableColumn fx:id="sched_yearsec" prefWidth="92.0" text="Year &amp; Section" />
+                                        <TableColumn fx:id="sched_roomNum" minWidth="0.0" prefWidth="82.0" text="Room #" />
+                                          <TableColumn fx:id="sched_subjectCode" prefWidth="93.0" text="Subject Code" />
+                                          <TableColumn fx:id="sched_entryTime" prefWidth="82.0" text="Entry Time" />
+                                          <TableColumn fx:id="sched_exitTime" prefWidth="82.0" text="Exit Time" />
+                                          <TableColumn fx:id="sched_date" prefWidth="109.0" text="Date" />
                                       </columns>
                                     </TableView>
                                     <PieChart layoutX="673.0" layoutY="29.0" prefHeight="205.0" prefWidth="285.0" stylesheets="@dashboardDesign.css" title="Room Availability">
@@ -182,7 +181,7 @@
                                     </PieChart>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="650.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="manageRooms_form" prefHeight="650.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="21.0" layoutY="25.0" prefHeight="600.0" prefWidth="320.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
                                        <children>
@@ -205,7 +204,7 @@
                                              </font>
                                           </Label>
                                           <JFXTextField fx:id="mr_cys" focusColor="WHITE" layoutX="213.0" layoutY="211.0" prefHeight="23.0" prefWidth="91.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
-                                          <JFXComboBox fx:id="mr_status" layoutX="109.0" layoutY="161.0" prefHeight="28.0" prefWidth="195.0" />
+                                          <JFXComboBox fx:id="mr_status" focusColor="#4d4d4d" layoutX="109.0" layoutY="161.0" prefHeight="28.0" prefWidth="195.0" />
                                           <Label fx:id="username121" layoutX="23.0" layoutY="209.0" text="Course/Year/Section :">
                                              <font>
                                                 <Font name="System Bold" size="18.0" />
@@ -222,7 +221,7 @@
                                              </font>
                                           </Label>
                                           <JFXTextField fx:id="mr_subject" focusColor="WHITE" layoutX="109.0" layoutY="296.0" prefHeight="23.0" prefWidth="195.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
-                                          <JFXComboBox fx:id="mr_timeDuration" layoutX="169.0" layoutY="252.0" prefHeight="28.0" prefWidth="135.0" />
+                                          <JFXComboBox fx:id="mr_timeDuration" focusColor="#4d4d4d" layoutX="169.0" layoutY="252.0" prefHeight="28.0" prefWidth="135.0" />
                                           <JFXButton fx:id="mr_addBtn" layoutX="21.0" layoutY="387.0" onAction="#mrAdd" prefHeight="50.0" prefWidth="130.0" stylesheets="@dashboardDesign.css" text="Add" textFill="WHITE">
                                              <styleClass>
                                                 <String fx:value="nav-btn-bgcolor" />
@@ -281,7 +280,7 @@
                                                 <TableColumn fx:id="mr_col_subject" prefWidth="118.0" text="Subject Code" />
                                             </columns>
                                           </TableView>
-                                          <TextField fx:id="mr_search" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="260.0" promptText="Search" stylesheets="@dashboardDesign.css">
+                                          <TextField fx:id="mr_search" layoutX="14.0" layoutY="14.0" onAction="#mrSearch" prefHeight="25.0" prefWidth="260.0" promptText="Search" stylesheets="@dashboardDesign.css">
                                              <styleClass>
                                                 <String fx:value="search" />
                                                 <String fx:value="search-focused" />
