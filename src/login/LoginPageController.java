@@ -102,32 +102,13 @@ public class LoginPageController {
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
 
-                    root.setOnMousePressed((MouseEvent event) -> {
-                        x = event.getSceneX();
-                        y = event.getSceneY();
-                    });
+                    stage.setMinHeight(700 + 15);
+                    stage.setMinWidth(1200 + 15);
 
-                    root.setOnMousePressed((MouseEvent event) -> {
-                        stage.setX(event.getScreenX() - x);
-                        stage.setY(event.getScreenX() - y);
-
-                    });
-
-                    root.setOnMouseDragged((javafx.scene.input.MouseEvent event) -> {
-                        stage.setX(event.getScreenX() - x);
-                        stage.setY(event.getScreenY() - y);
-
-                        stage.setOpacity(.8);
-                    });
-
-                    root.setOnMouseReleased((javafx.scene.input.MouseEvent event) -> {
-                        stage.setOpacity(1);
-                    });
-
-                    Image icon = new Image(getClass().getResourceAsStream("/img/appicon.png"));
+                    Image icon = new Image(getClass().getResourceAsStream("/img/uploadrrsIcon.png"));
                     stage.getIcons().add(icon);
 
-                    stage.initStyle(StageStyle.TRANSPARENT);
+                    stage.initStyle(StageStyle.DECORATED);
 
                     stage.setScene(scene);
                     stage.show();

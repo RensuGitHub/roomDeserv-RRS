@@ -21,7 +21,7 @@
                         <Image url="@../img/dsurbv.png" />
                      </image>
                   </ImageView>
-                  <JFXButton fx:id="loginBtn" layoutX="177.0" layoutY="437.0" onAction="#login" prefHeight="57.0" prefWidth="147.0" styleClass="loginButton" stylesheets="@LoginStyles.css" text="Log-in" textFill="WHITE">
+                  <JFXButton fx:id="loginBtn" layoutX="177.0" layoutY="437.0" onAction="#login" onKeyPressed="#login" prefHeight="57.0" prefWidth="147.0" styleClass="loginButton" stylesheets="@LoginStyles.css" text="Log-in" textFill="WHITE">
                      <font>
                         <Font name="Consolas" size="14.0" />
                      </font>

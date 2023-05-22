@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="main_form" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane prefHeight="700.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <BorderPane layoutX="213.0" layoutY="277.0" prefHeight="700.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <AnchorPane prefHeight="36.0" prefWidth="1100.0" styleClass="main-top-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane layoutX="86.0" layoutY="-82.0" prefHeight="31.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="minimizeBtn" layoutX="1110.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="25.0" prefWidth="45.0" styleClass="dashboard-minimize" stylesheets="@dashboardDesign.css">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="MINUS" size="1.2em" text="" />
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="closeBtn" layoutX="1155.0" layoutY="2.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="45.0" styleClass="dashboard-close" stylesheets="@dashboardDesign.css">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="CLOSE" size="1.2em" text="" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <left>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="670.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="62.0" layoutY="119.0" size="8em" text="" />
+                                    <Label layoutX="66.0" layoutY="135.0" text="Welcome" textFill="#e4e6eb">
+                                       <font>
+                                          <Font name="Tahoma" size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="username" alignment="CENTER" layoutX="8.0" layoutY="165.0" prefHeight="23.0" prefWidth="180.0" text="User" textFill="#e4e6eb" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="151.0" layoutX="34.0" layoutY="196.0" startX="-17.5" stroke="WHITE" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.5" />
+                                    <JFXButton fx:id="dashboard_btn" layoutX="10.0" layoutY="218.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Dashboard" textAlignment="CENTER" textFill="#fffefe">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="#bcb7b7" glyphName="DASHBOARD" size="2em" text="" wrappingWidth="24.0" />
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="manageRooms_btn" layoutX="11.0" layoutY="255.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Manage Rooms" textFill="#fffefe" AnchorPane.topAnchor="255.0">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="#bcb7b7" glyphName="BUILDING" size="1.9em" />
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="requests_btn" layoutX="11.0" layoutY="290.0" prefHeight="35.0" prefWidth="179.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text=" Requests" textFill="#fffefe">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="#bcb7b7" glyphName="ARROW_CIRCLE_DOWN" size="2em" />
+                                       </graphic>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="logout_btn" layoutX="14.0" layoutY="623.0" onAction="#logout" prefHeight="20.0" prefWidth="97.0" stylesheets="@dashboardDesign.css" text="Sign Out" textFill="#e4e6eb">
+                                       <graphic>
+                                          <FontAwesomeIconView glyphName="SIGN_OUT" size="2.0em" text="" />
+                                       </graphic>
+                                       <font>
+                                          <Font name="Tahoma" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="signout-form" />
+                                          <String fx:value="signout-btn" />
+                                       </styleClass>
+                                    </JFXButton>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <center>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1001.0" style="-fx-background-color: #1d1d1d;" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane fx:id="dashboard_form" prefHeight="670.0" prefWidth="1001.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="12.0" layoutY="14.0" prefHeight="232.0" prefWidth="635.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="light-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <AnchorPane layoutX="338.0" layoutY="6.0" prefHeight="220.0" prefWidth="281.0" style="-fx-background-radius: 10px; -fx-background-color: #3C4043;" stylesheets="@dashboardDesign.css">
+                                             <children>
+                                                <AnchorPane fx:id="dashboard_roomsOccupied" layoutX="15.0" layoutY="74.0" prefHeight="63.0" prefWidth="196.0" stylesheets="@dashboardDesign.css" AnchorPane.leftAnchor="71.0" AnchorPane.topAnchor="80.0">
+                                                   <styleClass>
+                                                      <String fx:value="nav-form" />
+                                                      <String fx:value="card" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <Label alignment="CENTER_RIGHT" layoutX="88.0" layoutY="19.0" prefHeight="33.0" prefWidth="114.0" text="0" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="30.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <ImageView fitHeight="206.0" fitWidth="220.0" layoutX="-45.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-45.0">
+                                                   <image>
+                                                      <Image url="@../img/occupiedsign.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="14.0" layoutY="6.0" prefHeight="220.0" prefWidth="281.0" style="-fx-background-radius: 10px; -fx-background-color: #3C4043;" stylesheets="@dashboardDesign.css">
+                                             <children>
+                                                <AnchorPane layoutX="71.0" layoutY="79.0" prefHeight="63.0" prefWidth="196.0" stylesheets="@dashboardDesign.css" AnchorPane.leftAnchor="71.0" AnchorPane.topAnchor="80.0">
+                                                   <styleClass>
+                                                      <String fx:value="nav-form" />
+                                                      <String fx:value="card" />
+                                                   </styleClass>
+                                                   <children>
+                                                      <Label fx:id="dashboard_roomsAvailable" alignment="CENTER_RIGHT" layoutX="88.0" layoutY="19.0" prefHeight="33.0" prefWidth="114.0" text="0" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="15.0">
+                                                         <font>
+                                                            <Font name="Berlin Sans FB" size="30.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </AnchorPane>
+                                                <ImageView fitHeight="206.0" fitWidth="220.0" layoutX="-45.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-45.0">
+                                                   <image>
+                                                      <Image url="@../img/unoccupiedsign.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="13.0" layoutY="256.0" prefHeight="400.0" prefWidth="975.0" stylesheets="@dashboardDesign.css">
+                                       <styleClass>
+                                          <String fx:value="light-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <TextField fx:id="dashboard_search" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" stylesheets="@dashboardDesign.css">
+                                             <styleClass>
+                                                <String fx:value="search" />
+                                                <String fx:value="search-focused" />
+                                             </styleClass>
+                                          </TextField>
+                                          <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" layoutX="25.0" layoutY="36.0" size="1.5EM" text="" wrappingWidth="16.714284896850586" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="17.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <TableView fx:id="dashboard_table" layoutX="23.0" layoutY="309.0" prefHeight="323.0" prefWidth="954.0" stylesheets="@dashboardDesign.css">
+                                       <columns>
+                                          <TableColumn prefWidth="50.0" text="Floor #" />
+                                          <TableColumn prefWidth="50.0" text="Room #" />
+                                          <TableColumn prefWidth="125.0" text="Status" />
+                                          <TableColumn prefWidth="121.0" text="Course/Year/Section" />
+                                          <TableColumn prefWidth="84.0" text="Date" />
+                                          <TableColumn text="Time-in" />
+                                          <TableColumn text="Time-out" />
+                                          <TableColumn prefWidth="120.0" text="Subject Code" />
+                                          <TableColumn prefWidth="243.0" text="Professor" />
+                                       </columns>
+                                    </TableView>
+                                    <PieChart layoutX="694.0" layoutY="31.0" prefHeight="174.0" prefWidth="257.0" styleClass="card" stylesheets="@dashboardDesign.css" title="Pie" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="manageRooms_form" layoutX="214.0" layoutY="194.0" prefHeight="670.0" prefWidth="1001.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane layoutX="14.0" layoutY="20.0" prefHeight="635.0" prefWidth="357.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
+                                       <children>
+                                          <Label alignment="CENTER_RIGHT" layoutX="9.0" layoutY="120.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Room #:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="mr_status" layoutX="179.0" layoutY="149.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" AnchorPane.topAnchor="149.0" />
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="154.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Status:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="188.0" prefHeight="15.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Course/Year/Section:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="221.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Time Duration:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="254.0" prefWidth="155.0" stylesheets="@../login/LoginStyles.css" text="Subject:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Arial" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <JFXButton fx:id="mr_addBtn" layoutX="36.0" layoutY="318.0" onAction="#mrAdd" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Add" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+                                          <JFXButton fx:id="mr_updateBtn" layoutX="214.0" layoutY="318.0" onAction="#mrUpdate" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Update" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
+                                          <JFXButton fx:id="mr_clearBtn" layoutX="36.0" layoutY="369.0" onAction="#mrClear" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Clear" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+                                          <JFXButton fx:id="mr_deleteBtn" layoutX="164.0" layoutY="369.0" onAction="#mrDelete" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Delete" textFill="WHITE" AnchorPane.rightAnchor="50.0" />
+                                          <JFXButton fx:id="mr_uploadBtn" layoutX="114.0" layoutY="429.0" onAction="#mrCheckIn" prefHeight="40.0" prefWidth="100.0" styleClass="card" stylesheets="@dashboardDesign.css" text="Upload" textFill="WHITE" />
+                                          <JFXTextField fx:id="mr_roomNum" focusColor="#fcfcfc" layoutX="179.0" layoutY="115.0" prefHeight="19.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <JFXTextField fx:id="mr_cys" focusColor="#fcfcfc" layoutX="179.0" layoutY="183.0" prefHeight="17.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <JFXTextField fx:id="mr_subject" focusColor="#fcfcfc" layoutX="179.0" layoutY="249.0" prefHeight="19.0" prefWidth="149.0" styleClass="infoField" stylesheets="@dashboardDesign.css" unFocusColor="WHITE" />
+                                          <ComboBox fx:id="mr_timeDuration" layoutX="179.0" layoutY="215.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@dashboardDesign.css" />
+                                       </children></AnchorPane>
+                                    <AnchorPane layoutX="383.0" layoutY="20.0" prefHeight="635.0" prefWidth="606.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
+                                       <children>
+                                          <TableView fx:id="mr_tableView" layoutX="13.0" layoutY="47.0" onMouseClicked="#mrSelectData" prefHeight="574.0" prefWidth="580.0">
+                                            <columns>
+                                              <TableColumn fx:id="mr_col_roomNum" prefWidth="75.0" text="Room #" />
+                                                <TableColumn fx:id="mr_col_status" prefWidth="75.0" text="Status" />
+                                                <TableColumn fx:id="mr_col_cys" prefWidth="132.0" text="Course/Year/Section" />
+                                                <TableColumn fx:id="mr_col_timeDuration" prefWidth="98.0" text="Time Duration" />
+                                                <TableColumn fx:id="mr_col_subject" prefWidth="199.0" text="Subject Code" />
+                                            </columns>
+                                          </TableView>
+                                          <TextField fx:id="mr_search" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="222.0" promptText="Search" stylesheets="@dashboardDesign.css">
+                                             <styleClass>
+                                                <String fx:value="search" />
+                                                <String fx:value="search-focused" />
+                                             </styleClass></TextField>
+                                          <FontAwesomeIconView fill="#fcfcfc" glyphName="SEARCH" layoutX="23.0" layoutY="33.0" size="1.5em" text="" AnchorPane.leftAnchor="24.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

@@ -23,14 +23,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #292b2f;
 }
 
+.dashboard-btn {
+    -fx-text-alignment: center;
+}
+
 .nav-btn {
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: center;
 }
 
 .signout-btn {
     -fx-background-color: #40444b;
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .4), 15, 0.5, 0.0, 0.0);
+    -fx-cursor: hand;
+}
+
+.signout-btn:hover {
+    -fx-background-color: #282A2D;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .4), 15, 0.5, 0.0, 0.0);
+    -fx-cursor: hand;
 }
 
 .light-bg {
@@ -38,8 +50,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 10px;
 }
 
+.nav-btn-bgcolor {
+    -fx-background-color: #5C6068;
+}
+
+.nav-btn-bgcolor:hover {
+    -fx-background-color: #71757F;
+}
+
 .shadow {
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .4), 4, 0, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, .4), 8, 0.3, 0, 0);
 }
 
 .card {
@@ -97,9 +117,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #9a9393;
 }
 
-.combo-box .arrow, .combo-box .arrow-button{
-    -fx-background-color: white;
-}
     /*-fx-border-color: linear-gradient(to bottom right, #2f3f89, #537e90);*/
 
 .table-view {
@@ -112,7 +129,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .table-view .column-header-background {
     -fx-background-color: linear-gradient(to bottom right, #2f3f89, #537e90);
     -fx-background-insets: 0 0 0 0;
-
 }
 
 .table-view .column-header, .filter{
@@ -140,4 +156,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: .8px;
 }
 
-
+.jfx-date-picker .text-field {
+    -jfx-unfocus-color: #b2a4a4;
+    -fx-text-fill: white;
+}

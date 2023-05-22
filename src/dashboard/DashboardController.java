@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
@@ -6,6 +6,7 @@ package dashboard;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +38,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 import roomdeservrrs.database;
 
 /**
@@ -70,8 +72,29 @@ public class DashboardController implements Initializable {
     private Label dashboard_roomsAvailable;
     @FXML
     private TextField dashboard_search;
+    
+    // Manage Room <DashboardController, uploadData>
+    
     @FXML
-    private TableView<?> dashboard_table;
+    private TableView<uploadData> dashboard_tableView;
+    @FXML
+    private TableColumn<uploadData, String> sched_roomNum;
+    @FXML
+    private TableColumn<uploadData, String> sched_status;
+    @FXML
+    private TableColumn<uploadData, String> sched_course;
+    @FXML
+    private TableColumn<uploadData, String> sched_yearsec;
+    @FXML
+    private TableColumn<uploadData, String> sched_date;
+    @FXML
+    private TableColumn<uploadData, String> sched_entryTime;
+    @FXML
+    private TableColumn<uploadData, String> sched_exitTime;
+    @FXML
+    private TableColumn<uploadData, String> sched_subjectCode;
+    @FXML
+    private TableColumn<uploadData, String> sched_prof;
     @FXML
     private AnchorPane manageRooms_form;
     @FXML
@@ -145,8 +168,9 @@ public class DashboardController implements Initializable {
         return listData;
     }
 
+  // Manage Room - Show List of Data 
+    
     private ObservableList<roomData> roomDataList;
-
     public void mrShowData() {
 
         roomDataList = mrListData();
@@ -160,6 +184,66 @@ public class DashboardController implements Initializable {
 
     }
 
+ 
+    // DASHBOARD - Show List of Schedules
+    
+    public ObservableList<uploadData> scheduleListData(){
+        ObservableList<uploadData> listData = FXCollections.observableArrayList();
+
+        String sql = "SELECT * FROM schedule";
+        connect = database.connectDb();
+        
+        try {
+            uploadData schedD;
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+                schedD = new uploadData(result.getInt("roomNum"),
+                        result.getString("prof"),
+                        result.getString("status"),
+                        result.getString("course"),
+                        result.getString("yrndsec"),
+                        result.getString("subjectCode"),
+                        result.getString("entryTime"),
+                        result.getString("exitTime"),
+                        result.getDate("date"));
+
+                listData.add(schedD);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        
+        return listData;
+    }    
+    
+    // DASHBOARD - Show All Data in Table
+    
+    private ObservableList<uploadData> listUploadData;
+    public void scheduleShowData() {
+        listUploadData = scheduleListData();
+        
+        sched_roomNum.setCellValueFactory(new PropertyValueFactory<>("roomNum"));
+        sched_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        sched_course.setCellValueFactory(new PropertyValueFactory<>("course"));
+        sched_yearsec.setCellValueFactory(new PropertyValueFactory<>("yrndsec"));
+        sched_entryTime.setCellValueFactory(new PropertyValueFactory<>("entryTime"));
+        sched_exitTime.setCellValueFactory(new PropertyValueFactory<>("exitTime"));
+        sched_subjectCode.setCellValueFactory(new PropertyValueFactory<>("subjectCode"));
+        sched_prof.setCellValueFactory(new PropertyValueFactory<>("prof"));
+        sched_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        dashboard_tableView.setItems(listUploadData);
+
+    }
+    
+
+    // Manage Room - Select Data in Table [ON-CLICK]
+
     public void mrSelectData() {
         roomData roomD = mr_tableView.getSelectionModel().getSelectedItem();
         int num = mr_tableView.getSelectionModel().getSelectedIndex();
@@ -172,6 +256,9 @@ public class DashboardController implements Initializable {
         mr_subject.setText(String.valueOf(roomD.getSubject()));
     }
 
+
+    // Manage Room - Add Data [BUTTON]
+    
     public void mrAdd() {
         String sql = "INSERT INTO room (roomNumber,status,cys,timeDuration,subject) VALUES(?,?,?,?,?)";
 
@@ -241,7 +328,9 @@ public class DashboardController implements Initializable {
         }
 
     }
-    //Combo Boxes Data
+    
+    
+    // Manage Room - Update Data [BUTTON]
 
     public void mrUpdate() {
         String roomNum = mr_roomNum.getText();
@@ -287,6 +376,9 @@ public class DashboardController implements Initializable {
         }
     }
 
+    
+    // Manage Room - Delete Data [BUTTON]
+    
     public void mrDelete() {
         String roomNum = mr_roomNum.getText();
         String status1 = (String) mr_status.getSelectionModel().getSelectedItem();
@@ -326,7 +418,7 @@ public class DashboardController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Deleted!");
                     alert.showAndWait();
-                    
+
                     mrShowData();
                     mrClear();
 
@@ -342,6 +434,8 @@ public class DashboardController implements Initializable {
 
     }
 
+    // Manage Room - Clear Text Field [BUTTON]
+    
     public void mrClear() {
         mr_roomNum.setText("");
         mr_status.getSelectionModel().clearSelection();
@@ -349,9 +443,39 @@ public class DashboardController implements Initializable {
         mr_timeDuration.getSelectionModel().clearSelection();
         mr_subject.setText("");
     }
+    
+    
+    // [SEND DATA TO DASHBOARD] Manage Room - Check-in Upload
+    
+    
+    public void mrCheckIn() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/upload/upload.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            
+            
+            int width = 690, height = 620;
+            stage.setMinHeight(400+15);
+            stage.setMinWidth(400+15);
+            
 
+            Image icon = new Image(getClass().getResourceAsStream("/img/uploadrrsIcon.png"));
+            stage.getIcons().add(icon);
+
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     private String[] status = {"Occupied", "Unoccupied"};
 
+    // Manage Room - Select Room Status / 
+    
+    
     private void mrStatus() {
         List<String> listData = new ArrayList<>();
 
@@ -363,12 +487,16 @@ public class DashboardController implements Initializable {
         mr_status.setItems(list);
     }
 
+    
+    
+    // Manage Room - Enter Time Duration
+    
     private String duration[] = {"---", "1hr", "2hr", "3hr", "4hr", "5hr"};
-
+    
     private void mrTimeDuration() {
         List<String> listData = new ArrayList<>();
 
-        for (String data : duration) {
+        for(String data : duration) {
             listData.add(data);
         }
 
@@ -378,6 +506,8 @@ public class DashboardController implements Initializable {
 
     private double x = 0;
     private double y = 0;
+    
+    // Dashboard Sign-out / Log-out
 
     public void logout() {
         try {
@@ -437,6 +567,8 @@ public class DashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         mrTimeDuration();
         mrStatus();
-
+        
+        mrShowData();
+        
     }
 }
