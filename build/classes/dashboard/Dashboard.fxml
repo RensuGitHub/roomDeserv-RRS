@@ -92,7 +92,7 @@
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1d1d1d;" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane fx:id="dashboard_form" prefHeight="650.0" prefWidth="986.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="dashboard_form" prefHeight="650.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="235.0" prefWidth="635.0" stylesheets="@dashboardDesign.css">
                                        <styleClass>
@@ -108,7 +108,7 @@
                                                       <String fx:value="nav-form" />
                                                    </styleClass>
                                                    <children>
-                                                      <Label fx:id="dashboard_roomsAvailable" layoutX="56.0" layoutY="16.0" prefHeight="33.0" prefWidth="130.0" text="0">
+                                                      <Label fx:id="roomsAvailable_CounterStrike" layoutX="56.0" layoutY="16.0" prefHeight="33.0" prefWidth="130.0" text="0">
                                                          <font>
                                                             <Font name="Berlin Sans FB" size="30.0" />
                                                          </font>
@@ -130,7 +130,7 @@
                                                       <String fx:value="nav-form" />
                                                    </styleClass>
                                                    <children>
-                                                      <Label fx:id="dashboard_roomsOccupied" layoutX="56.0" layoutY="16.0" prefHeight="33.0" prefWidth="130.0" text="0">
+                                                      <Label layoutX="56.0" layoutY="16.0" prefHeight="33.0" prefWidth="130.0" text="0">
                                                          <font>
                                                             <Font name="Berlin Sans FB" size="30.0" />
                                                          </font>
@@ -181,7 +181,7 @@
                                     </PieChart>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="manageRooms_form" prefHeight="650.0" prefWidth="986.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="manageRooms_form" prefHeight="650.0" prefWidth="986.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="21.0" layoutY="25.0" prefHeight="600.0" prefWidth="320.0" styleClass="light-bg" stylesheets="@dashboardDesign.css">
                                        <children>

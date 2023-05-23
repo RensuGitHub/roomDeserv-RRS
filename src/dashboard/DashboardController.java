@@ -62,6 +62,10 @@ public class DashboardController implements Initializable {
     @FXML
     private Label username;
     @FXML
+    private Label roomsAvailable_CounterStrike;
+    @FXML
+    private Label roomsUnavailable_Count;
+    @FXML
     private JFXButton dashboard_btn;
     @FXML
     private JFXButton manageRooms_btn;
@@ -152,12 +156,11 @@ public class DashboardController implements Initializable {
     }
     
     // DASHBOARD Count // CURRENTLY WORKING ON IT.
+    
     /*
     public void dashboardCount() {
-        Date date = new Date();
-        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-
-        String sql = "SELECT * schedule WHERE entryTime = '"+sqlDate+"'";
+       
+        String sql = "SELECT COUNT(id) FROM rooms";
 
         connect = database.connectDb();
         
@@ -176,14 +179,55 @@ public class DashboardController implements Initializable {
     
     */
     
-    // Test
     
+    // Test
+    /*
     public void availableCount() {
         
         String sql = "SELECT COUNT * AS count FROM room WHERE status = 'Vacant'";
         
+    } */
+    
+    /*
+    public void mrAvailableRooms() {
+        
+        String sql = "SELECT COUNT(id) FROM room WHERE status = 'Vacant'";
+        
+        connect = database.connectDb();
+        //  AR = Available Rooms, not Assault Rifle.
+        int countAR = 0;
+
+        try {
+            prepare = connect.prepareStatement (sql);
+            result = prepare.executeQuery();
+            while (result.next()) {
+                 countAR = result.getInt("COUNT (id) ");
+        }
+            roomsAvailable_CounterStrike.setText(String.valueOf(countAR));
+        } catch (Exception e) {e.printStackTrace();}
+}
+    
+    // Unavailable
+    
+    public void mrUnavailableRooms() {
+        String sql = "SELECT COUNT(id) FROM room WHERE status = 'Unavailable'";
+        
+        connect = database.connectDb();
+        
+        int countUR = 0;
+        
+        try {
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+            
+            while(result.next()) {
+                countUR = result.getInt("COUNT(id)");
+            }
+            roomsUnavailable_Count.setText(String.valueOf(countUR));
+        } catch (Exception e) {e.printStackTrace();}
     }
     
+    */
     
     // Executing commands for SQL Preparation, fow window 'MANAGE ROOM/Manage Room'
     public ObservableList<roomData> mrListData() {
@@ -300,6 +344,9 @@ public class DashboardController implements Initializable {
             
             scheduleShowData();
             scheduleSearch();
+            // mrAvailableRooms();
+            // mrUnavailableRooms();
+            
         
         // Manage Room Button - show Data & re-enable Search    
         
@@ -309,6 +356,8 @@ public class DashboardController implements Initializable {
             System.out.println("Switched to Manage Rooms.");
             
             mrShowData();
+            // mrAvailableRooms();
+            // mrUnavailableRooms();
             scheduleSearch();
             mrSearch();
         }
@@ -618,7 +667,7 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
     }
-    private String[] status = {"Deserved", "Vacant", "Room/Skill Issue", "Defense", "Admission"};
+    private String[] status = {"Reserved", "Vacant", "Unavailable", "Defense", "Admission"};
 
     // Manage Room - Select Room Status 
     private void mrStatus() {
@@ -710,6 +759,7 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         displayUsername();
+        // mrAvailableRooms();
         mrTimeDuration();
         mrStatus();
         
@@ -721,6 +771,7 @@ public class DashboardController implements Initializable {
         scheduleSearch();
         // Enables Search Bar in MANAGE ROOM Form
         mrSearch();
-
+        
+        // mrUnavailableRooms();
     }
 }
